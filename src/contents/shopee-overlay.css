@@ -1,0 +1,1050 @@
+/* DataToko - Professional Analytics Panel */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* Base Reset */
+.datatoko-panel * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Main Panel */
+.datatoko-panel {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e5e7eb;
+  width: 100%;
+  max-width: 1100px;
+  margin: 12px auto;
+  overflow: visible;
+  position: relative;
+}
+
+/* Header */
+.datatoko-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background: #fafafa;
+  border-bottom: 1px solid #f0f0f0;
+  position: relative;
+  z-index: 1;
+}
+
+
+
+.datatoko-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+
+.datatoko-fab-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.datatoko-fab-icon img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.datatoko-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: #fff;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+}
+
+.datatoko-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1f2937;
+  letter-spacing: -0.2px;
+}
+
+.datatoko-badge {
+  font-size: 10px;
+  font-weight: 600;
+  color: white;
+  background: #1A352B;
+  padding: 3px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.datatoko-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.datatoko-update {
+  font-size: 11px;
+  color: #9ca3af;
+  font-weight: 500;
+}
+
+.datatoko-captured {
+  font-size: 11px;
+  color: #10b981;
+  font-weight: 600;
+}
+
+.datatoko-fetching {
+  font-size: 11px;
+  color: #f59e0b;
+  font-weight: 600;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.datatoko-load-btn {
+  font-size: 11px;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, #1A352B 0%, #2d5a4a 100%);
+  border: none;
+  padding: 5px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  box-shadow: 0 2px 4px rgba(238, 77, 45, 0.2);
+}
+
+.datatoko-load-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(238, 77, 45, 0.3);
+}
+
+.datatoko-stop-btn {
+  font-size: 11px;
+  font-weight: 600;
+  color: white;
+  background: #6b7280;
+  border: none;
+  padding: 5px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.datatoko-stop-btn:hover {
+  background: #4b5563;
+}
+
+.datatoko-refresh {
+  font-size: 11px;
+  font-weight: 600;
+  color: #1A352B;
+  background: transparent;
+  border: 1px solid #fecaca;
+  padding: 4px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.datatoko-refresh:hover {
+  background: #fef2f2;
+  border-color: #1A352B;
+}
+
+/* Stats Grid */
+.datatoko-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 16px;
+  gap: 4px;
+  flex-wrap: nowrap;
+  overflow: visible;
+  position: relative;
+}
+
+.datatoko-stat {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 8px;
+  text-align: center;
+  min-width: 70px;
+}
+
+.datatoko-stat.highlight {
+  background: #fef7f5;
+  border-radius: 6px;
+  padding: 10px 12px;
+  min-width: 100px;
+}
+
+.datatoko-stat-value {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1f2937;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+.datatoko-stat-value.main {
+  color: #1A352B;
+  font-size: 13px;
+}
+
+.datatoko-stat-value.rating {
+  color: #f59e0b;
+}
+
+.datatoko-stat-value.success {
+  color: #10b981;
+}
+
+.datatoko-stat-label {
+  font-size: 11px;
+  color: #6b7280;
+  font-weight: 500;
+  margin-top: 3px;
+  white-space: nowrap;
+}
+
+.datatoko-divider {
+  width: 1px;
+  height: 36px;
+  background: #e5e7eb;
+  margin: 0 8px;
+  flex-shrink: 0;
+}
+
+/* Tooltip Styles */
+.datatoko-tooltip-container {
+  position: relative;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.datatoko-tooltip-container:hover {
+  z-index: 999999;
+}
+
+.datatoko-tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 12px;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+  border-radius: 10px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25), 0 4px 12px rgba(0, 0, 0, 0.15);
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+  z-index: 999999;
+  pointer-events: none;
+}
+
+.datatoko-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 8px solid transparent;
+  border-top-color: #374151;
+}
+
+.datatoko-tooltip-container:hover .datatoko-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-4px);
+}
+
+.datatoko-tooltip-title {
+  font-size: 11px;
+  font-weight: 500;
+  color: #9ca3af;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.datatoko-tooltip-value {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+
+.datatoko-tooltip-note {
+  font-size: 10px;
+  color: #9ca3af;
+  font-style: italic;
+}
+
+
+/* Footer with Button */
+.datatoko-footer {
+  padding: 0 20px 16px;
+}
+
+/* Analyze Button */
+.datatoko-analyze-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 12px 24px;
+  font-size: 13px;
+  font-weight: 600;
+  color: white;
+  background: #1A352B;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.datatoko-analyze-btn:hover {
+  background: #243d33;
+}
+
+/* Small Card for Product Page */
+.win-small-card {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+  padding: 14px;
+  min-width: 200px;
+}
+
+.win-small-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 12px;
+  font-weight: 600;
+  font-size: 12px;
+  color: #1f2937;
+}
+
+.win-small-stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.win-small-stat-row:last-child {
+  border-bottom: none;
+}
+
+.win-small-label {
+  font-size: 11px;
+  color: #6b7280;
+}
+
+.win-small-value {
+  font-size: 12px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.win-small-value.highlight {
+  color: #1A352B;
+}
+
+/* Modal Styles */
+.win-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999999;
+}
+
+.win-modal-content {
+  background: white;
+  border-radius: 12px;
+  width: 95%;
+  max-width: 1100px;
+  max-height: 85vh;
+  overflow: hidden;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
+}
+
+.win-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  border-bottom: 1px solid #e5e7eb;
+  background: #fafafa;
+}
+
+.win-modal-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.win-modal-subtitle {
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 4px;
+}
+
+.win-modal-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.win-export-btn {
+  padding: 8px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  color: white;
+  background: #10b981;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.win-export-btn:hover {
+  background: #059669;
+}
+
+.win-modal-close {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: #e5e7eb;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.win-modal-close:hover {
+  background: #d1d5db;
+}
+
+.win-modal-body {
+  padding: 0;
+  overflow-y: auto;
+  max-height: calc(85vh - 80px);
+}
+
+/* Table Styles */
+.win-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.win-table th {
+  text-align: left;
+  padding: 12px 16px;
+  background: #f9fafb;
+  color: #6b7280;
+  font-weight: 600;
+  border-bottom: 1px solid #e5e7eb;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.win-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #f3f4f6;
+  color: #1f2937;
+  vertical-align: middle;
+}
+
+.win-table tr:hover td {
+  background: #f9fafb;
+}
+
+.win-product-cell {
+  max-width: 300px;
+}
+
+.win-product-name {
+  font-size: 12px;
+  color: #1f2937;
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.win-discount {
+  display: inline-block;
+  padding: 2px 6px;
+  background: #fef2f2;
+  color: #dc2626;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.win-rating {
+  color: #f59e0b;
+  font-weight: 500;
+}
+
+.win-revenue {
+  font-weight: 600;
+  color: #059669;
+}
+
+.win-empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #6b7280;
+}
+
+.win-empty-state p {
+  margin: 8px 0;
+}
+
+.win-table-footer {
+  text-align: center;
+  padding: 16px;
+  font-size: 12px;
+  color: #6b7280;
+  background: #f9fafb;
+  border-top: 1px solid #e5e7eb;
+}
+
+/* Legacy support */
+.win-store-overlay {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Loading Overlay */
+.datatoko-loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999999;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.datatoko-loading-modal {
+  background: white;
+  border-radius: 16px;
+  padding: 32px;
+  width: 400px;
+  max-width: 90vw;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.datatoko-loading-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.datatoko-loading-header h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0;
+}
+
+.datatoko-loading-spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid #f3f4f6;
+  border-top-color: #1A352B;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.datatoko-loading-complete .datatoko-loading-checkmark {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: white;
+}
+
+.datatoko-loading-paused .datatoko-loading-pause-icon {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+}
+
+.datatoko-loading-content {
+  margin-bottom: 24px;
+}
+
+.datatoko-loading-progress-bar {
+  height: 8px;
+  background: #f3f4f6;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.datatoko-loading-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #1A352B 0%, #2d5a4a 100%);
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.datatoko-loading-stats {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-bottom: 16px;
+}
+
+.datatoko-loading-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.datatoko-loading-stat-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.datatoko-loading-stat-label {
+  font-size: 12px;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.datatoko-loading-hint {
+  text-align: center;
+  font-size: 13px;
+  color: #9ca3af;
+  margin: 0;
+}
+
+.datatoko-loading-summary {
+  text-align: center;
+  padding: 16px 0;
+}
+
+.datatoko-loading-summary-number {
+  display: block;
+  font-size: 48px;
+  font-weight: 700;
+  color: #10b981;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.datatoko-loading-summary-text {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.datatoko-loading-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.datatoko-loading-btn {
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border: none;
+}
+
+.datatoko-loading-btn-primary {
+  background: linear-gradient(135deg, #1A352B 0%, #2d5a4a 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(238, 77, 45, 0.3);
+}
+
+.datatoko-loading-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(238, 77, 45, 0.4);
+}
+
+.datatoko-loading-btn-secondary {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+.datatoko-loading-btn-secondary:hover {
+  background: #e5e7eb;
+}
+
+.datatoko-loading-btn-stop {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.datatoko-loading-btn-stop:hover {
+  background: #fecaca;
+}
+
+/* Product Stats Panel */
+.datatoko-product-panel {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin: 16px 0;
+  width: 100%;
+  max-width: 400px;
+  overflow: hidden;
+}
+
+.datatoko-product-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, #fff7ed 0%, #ffffff 100%);
+  border-bottom: 1px solid #f3f4f6;
+  cursor: pointer;
+}
+
+.datatoko-product-header:hover {
+  background: linear-gradient(135deg, #fed7aa 0%, #fff7ed 100%);
+}
+
+.datatoko-logo-small {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: linear-gradient(135deg, #1A352B 0%, #2d5a4a 100%);
+  color: white;
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: 6px;
+  margin-right: 8px;
+}
+
+.datatoko-brand-text {
+  font-weight: 600;
+  font-size: 14px;
+  color: #1f2937;
+}
+
+.datatoko-header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.datatoko-update-time {
+  font-size: 11px;
+  color: #9ca3af;
+}
+
+.datatoko-toggle {
+  font-size: 10px;
+  color: #6b7280;
+}
+
+.datatoko-product-content {
+  padding: 0;
+}
+
+.datatoko-section {
+  padding: 12px 16px;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.datatoko-section:last-child {
+  border-bottom: none;
+}
+
+.datatoko-section-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: #374151;
+  margin: 0 0 10px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.datatoko-stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+}
+
+.datatoko-stat-label {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.datatoko-stat-value {
+  font-size: 13px;
+  font-weight: 500;
+  color: #1f2937;
+}
+
+.datatoko-highlight {
+  color: #1A352B;
+  font-weight: 600;
+}
+
+.datatoko-trend-up {
+  color: #10b981;
+  font-weight: 500;
+}
+
+.datatoko-trend-down {
+  color: #ef4444;
+  font-weight: 500;
+}
+
+.datatoko-product-footer {
+  padding: 8px 16px;
+  background: #f9fafb;
+  border-top: 1px solid #f3f4f6;
+}
+
+.datatoko-disclaimer {
+  font-size: 10px;
+  color: #9ca3af;
+  font-style: italic;
+}
+
+.datatoko-loading-text {
+  padding: 24px 16px;
+  text-align: center;
+  color: #9ca3af;
+  font-size: 13px;
+}
+
+/* Search Stats Overlay */
+.datatoko-search-overlay {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 99999;
+  padding: 0;
+}
+
+.datatoko-search-overlay.minimized {
+  cursor: pointer;
+}
+
+.datatoko-search-loading {
+  background: linear-gradient(135deg, #1A352B 0%, #2d5a4a 100%);
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.datatoko-search-minimized {
+  background: linear-gradient(135deg, #1A352B 0%, #2d5a4a 100%);
+  color: white;
+  padding: 8px 20px;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.datatoko-search-container {
+  background: white;
+  border-bottom: 2px solid #1A352B;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.datatoko-search-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #1A352B 0%, #2d5a4a 100%);
+  color: white;
+}
+
+.datatoko-search-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.datatoko-search-icon {
+  font-size: 18px;
+}
+
+.datatoko-search-minimize {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+
+.datatoko-search-minimize:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.datatoko-search-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1px;
+  background: #e5e7eb;
+  padding: 1px;
+}
+
+.datatoko-search-stat {
+  background: white;
+  padding: 14px 10px;
+  text-align: center;
+}
+
+.datatoko-search-stat.highlight {
+  background: #f0fdf9;
+}
+
+.datatoko-search-stat-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 4px;
+}
+
+.datatoko-search-stat.highlight .datatoko-search-stat-value {
+  color: #1A352B;
+}
+
+.datatoko-search-stat-label {
+  font-size: 11px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.datatoko-search-footer {
+  padding: 8px 20px;
+  background: #f9fafb;
+  font-size: 10px;
+  color: #9ca3af;
+  text-align: center;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .datatoko-search-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .datatoko-search-stat-value {
+    font-size: 15px;
+  }
+}

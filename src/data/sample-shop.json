@@ -1,0 +1,18 @@
+{
+    "error": 0,
+    "error_msg": "",
+    "data": {
+        "shopid": 52635036,
+        "userid": 52636424,
+        "name": "Samsung Official Shop",
+        "follower_count": 2985134,
+        "rating_star": 4.891454,
+        "item_count": 1599,
+        "response_rate": 100,
+        "account": {
+            "username": "samsung.official",
+            "official_shop": true
+        },
+        "ctime": 1516089696
+    }
+}
