@@ -563,25 +563,22 @@ const DataTokoSidebar = () => {
         }
     }, [handlePageChange])
 
-    // Listen for SHOPEE_PDP_UPDATE from background script (passive capture via debugger)
-    // This is now the PRIMARY data source for product details
+    // NOTE: SHOPEE_PDP_UPDATE passive capture is DISABLED
+    // We're using FETCH_PDP from external API (127.0.0.1:5555) as primary data source
+    // Passive capture was overwriting data with incomplete response (historical_sold = 0)
+    /*
     useEffect(() => {
         const messageListener = (message: any) => {
             if (message.type === "SHOPEE_PDP_UPDATE" && message.data) {
                 const shopeeData = message.data
-
                 console.log("[OK] Received passive PDP data:", shopeeData.name?.substring(0, 50))
-                console.log("[DATA] Item ID:", shopeeData.itemid)
-                console.log("[SALES] Historical sold:", shopeeData.historical_sold)
-
-                // Process the data exactly like before (passively captured from Shopee API)
                 processProductData(shopeeData)
             }
         }
-
         chrome.runtime.onMessage.addListener(messageListener)
         return () => chrome.runtime.onMessage.removeListener(messageListener)
     }, [])
+    */
 
     // Handle drag start
     const handleDragStart = useCallback((e: React.MouseEvent | React.TouchEvent) => {
