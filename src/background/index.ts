@@ -682,38 +682,94 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
                 return response.json()
             })
             .then(result => {
-                console.log("[DEBUG] Raw API result:", result)
+                console.log("[DEBUG] Raw API result keys:", Object.keys(result.data || {}))
 
-                // Handle nested structure: data.item contains item info
-                const itemData = result.data?.item || result.data || result
+                // Parse the nested structure from API response
+                const itemData = result.data?.item || {}
                 const reviewData = result.data?.product_review || {}
                 const shopData = result.data?.shop || {}
 
-                // Merge all data together for easier processing
+                // Merge all data together for sidebar processing
                 const data = {
-                    ...itemData,
-                    // Add review data
-                    historical_sold: reviewData.historical_sold || itemData.historical_sold || 0,
-                    rating_star: reviewData.rating_star || itemData.item_rating?.rating_star || 0,
-                    rating_count: reviewData.rating_count || itemData.rating_count || [0, 0, 0, 0, 0, 0],
-                    cmt_count: reviewData.cmt_count || itemData.cmt_count || 0,
-                    liked_count: reviewData.liked_count || itemData.liked_count || 0,
-                    // Add shop data
-                    shop_info: shopData,
-                    // Use item_id and shop_id from itemData
+                    // Basic product info
                     itemid: itemData.item_id || itemData.itemid,
                     shopid: itemData.shop_id || itemData.shopid,
-                    // Use title as name if name not present
-                    name: itemData.name || itemData.title || ""
+                    name: itemData.title || itemData.name || "",
+                    image: itemData.image || "",
+                    brand: itemData.brand || "",
+
+                    // Timestamps
+                    ctime: itemData.ctime || 0,
+
+                    // Price info (prices in API are multiplied by 100000)
+                    price: itemData.price || 0,
+                    price_min: itemData.price_min || 0,
+                    price_max: itemData.price_max || 0,
+                    price_before_discount: itemData.price_before_discount || 0,
+                    discount: itemData.raw_discount || itemData.show_discount || 0,
+
+                    // Stock info
+                    stock: itemData.stock || itemData.normal_stock || 0,
+                    normal_stock: itemData.normal_stock || 0,
+
+                    // Sales info from product_review (most accurate)
+                    historical_sold: reviewData.historical_sold || itemData.historical_sold || 0,
+                    historical_sold_display: reviewData.historical_sold_display || "",
+
+                    // Rating info from product_review
+                    // rating_count array: [total, 1star, 2star, 3star, 4star, 5star]
+                    rating_star: reviewData.rating_star || itemData.item_rating?.rating_star || 0,
+                    rating_count: reviewData.rating_count || [0, 0, 0, 0, 0, 0],
+                    total_rating_count: reviewData.total_rating_count || 0,
+
+                    // Engagement from product_review
+                    liked_count: reviewData.liked_count || 0,
+                    cmt_count: reviewData.cmt_count || 0,
+                    view_count: itemData.view_count || 0,
+
+                    // Category info
+                    cat_id: itemData.cat_id || 0,
+                    categories: itemData.categories || itemData.fe_categories || [],
+
+                    // Shop location
+                    shop_location: itemData.shop_location || "",
+
+                    // Shop info
+                    shop_info: {
+                        shopid: shopData.shop_id || itemData.shop_id,
+                        username: shopData.username || "",
+                        name: shopData.name || "",
+                        is_official_shop: shopData.is_official_shop || false,
+                        is_preferred_plus: shopData.is_preferred_plus || false,
+                        is_shopee_verified: shopData.is_shopee_verified || false,
+                        last_active_time: shopData.last_active_time || 0,
+                        vacation: shopData.vacation || false
+                    },
+
+                    // Models/Variants with full data
+                    models: (itemData.models || []).map((m: any) => ({
+                        modelid: m.model_id || m.modelid,
+                        name: m.name || "",
+                        price: m.price || 0,
+                        price_before_discount: m.price_before_discount || 0,
+                        stock: m.stock || m.normal_stock || 0,
+                        normal_stock: m.normal_stock || 0,
+                        sold: m.sold || 0,
+                        has_stock: m.has_stock !== false
+                    })),
+
+                    // Tier variations (size, color, etc.)
+                    tier_variations: itemData.tier_variations || []
                 }
 
-                console.log("[OK] ======== PDP DATA RECEIVED ========")
+                console.log("[OK] ======== PDP DATA PROCESSED ========")
                 console.log("[DATA] Product:", data.name?.substring(0, 50))
                 console.log("💰 Price:", data.price_min / 100000, "-", data.price_max / 100000)
                 console.log("[SALES] Historical Sold:", data.historical_sold)
-                console.log("[RATING] Rating:", data.rating_star)
+                console.log("[RATING] Rating:", data.rating_star, "| Count:", data.rating_count)
+                console.log("[ENGAGEMENT] Comments:", data.cmt_count, "| Likes:", data.liked_count)
                 console.log("[VARIANT] Variants:", data.models?.length || 0)
-                console.log("[SHOP] Shop:", data.shop_info?.username)
+                console.log("[SHOP] Shop:", data.shop_info?.username, "| Location:", data.shop_location)
 
                 sendResponse({ success: true, data: data })
             })
